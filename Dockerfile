@@ -1,14 +1,9 @@
-# Resilio Sync
-#
-# VERSION               0.1
-#
-
-FROM ubuntu
-MAINTAINER Resilio Inc. <support@resilio.com>
+FROM armhf/debian:latest
+MAINTAINER BrainGamer
 LABEL com.resilio.version="2.4.4"
 
-ADD https://download-cdn.resilio.com/2.4.4/linux-x64/resilio-sync_x64.tar.gz /tmp/sync.tgz
-RUN tar -xf /tmp/sync.tgz -C /usr/bin rslsync && rm -f /tmp/sync.tgz
+ADD https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz /tmp/sync.tar.gz
+RUN tar -xf /tmp/sync.tar.gz -C /usr/bin rslsync && rm -f /tmp/sync.tgz
 
 COPY sync.conf.default /etc/
 COPY run_sync /usr/bin/
